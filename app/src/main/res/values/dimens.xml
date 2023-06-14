@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="analog_clock_min_size">200dp</dimen>
+    <dimen name="analog_clock_size_step">10dp</dimen>
+    <dimen name="analog_clock_default_size">300dp</dimen>
+</resources>
