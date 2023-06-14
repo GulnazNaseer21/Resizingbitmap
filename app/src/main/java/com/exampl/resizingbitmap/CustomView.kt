@@ -30,6 +30,9 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
 
     private var offscreenBitmap: Bitmap? = null
     private var offscreenCanvas: Canvas? = null
+    private var backgroundImage: Bitmap? = null
+
+
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : this(context, attrs)
@@ -46,6 +49,10 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
         invalidate()
     }
 
+    fun setBackgroundBitmap(bitmap: Bitmap) {
+        backgroundImage = bitmap
+        invalidate() // Request a redraw of the view
+    }
     fun setScale(scale: Float) {
         this.scale = scale
         sharedPreferences.edit().putFloat("scale", scale).apply()
@@ -64,8 +71,15 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
         }
 
         offscreenCanvas?.let { offscreenCanvas ->
-            offscreenCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
+            offscreenCanvas.drawColor(Color.BLUE, PorterDuff.Mode.CLEAR)
 
+
+          /*  // Draw the background image if available
+            backgroundImage?.let {
+                val srcRect = Rect(0, 0, it.width, it.height)
+                val destRect = Rect(0, 0, canvas.width, canvas.height)
+                offscreenCanvas.drawBitmap(it, srcRect, destRect, null)
+            }*/
             val viewWidth = width
         val viewHeight = height
         val imageResolution = (context.getScreenWidth() * 70) / 100
@@ -211,6 +225,7 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
     }
 
     private fun handleTouchUp(x: Float, y: Float) {
+
         // Perform action when the user lifts their finger from the view
         // Example: Change the color of the view back to its original color
      //   setBackgroundColor(Color.WHITE)
