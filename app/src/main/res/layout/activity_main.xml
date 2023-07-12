@@ -5,23 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+        <RelativeLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/image"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="123dp"
+                    android:layout_marginLeft="123dp"
+                    android:layout_marginTop="99dp"
+                    android:layout_marginEnd="138dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/img_clock_10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.59"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+        </RelativeLayout>
 
         <SeekBar
+            android:layout_marginTop="50dp"
             android:id="@+id/seekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="100"
+
             app:layout_constraintTop_toTopOf="parent"/>
-
-        <com.exampl.resizingbitmap.CustomView
+        <SeekBar
+            android:id="@+id/seekBarResize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@+id/seekBar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/customView"
-            app:layout_constraintStart_toStartOf="parent"
+/>
+
+<!--        <com.exampl.resizingbitmap.CustomViewOld
+            android:id="@+id/customViewOld"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarResize" />-->
+        <com.exampl.resizingbitmap.CustomView
+            android:id="@+id/customView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

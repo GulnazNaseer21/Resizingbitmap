@@ -28,14 +28,14 @@ class CustomViewOld(context: Context, attrs: AttributeSet?) : View(context, attr
 
     fun setBitmap(bitmap: Bitmap) {
         this.bitmap = bitmap
-        invalidate()
+        postInvalidateDelayed(1000)
     }
 
     fun setScale(scale: Float) {
         this.scale = scale
         sharedPreferences.edit().putFloat("scale", scale).apply()
 
-        invalidate()
+        postInvalidateDelayed(1000)
     }
 
     @SuppressLint("DrawAllocation")
@@ -57,6 +57,8 @@ class CustomViewOld(context: Context, attrs: AttributeSet?) : View(context, attr
              sharedPreferences.edit().putInt("bitmapWidth", progresswidth).apply()
 
             canvas.drawBitmap(scaledBitmap, offsetX.toFloat(), offsetY.toFloat(), null)
+            postInvalidateDelayed(1000)
+
         }
      /*   bitmap?.let {
 
@@ -121,6 +123,8 @@ class CustomViewOld(context: Context, attrs: AttributeSet?) : View(context, attr
         translationY += deltaY
         lastTouchX = x
         lastTouchY = y
+        postInvalidateDelayed(1000)
+
     }
 
     private fun handleTouchUp(x: Float, y: Float) {

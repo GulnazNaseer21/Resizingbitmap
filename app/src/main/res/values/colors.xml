@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="primary_200">#ff8642</color>
+    <color name="primary_500">#FF792E</color>
+    <color name="primary_700">#461900</color>
+    <color name="secondary_200">#040404</color>
+    <color name="secondary_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="bg_card">#222222</color>
+    <color name="bg_exit_dialog">#313131</color>
+    <color name="rating_color_active">#F8D521</color>
+    <color name="rating_color_inactive">#535353</color>
+
 </resources>

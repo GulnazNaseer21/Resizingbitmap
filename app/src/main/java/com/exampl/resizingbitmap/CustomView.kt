@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.graphics.Rect
 import android.os.Handler
@@ -30,6 +31,10 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
 
     private var offscreenBitmap: Bitmap? = null
     private var offscreenCanvas: Canvas? = null
+    private val clockPaint = Paint()
+    private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private var clockOpacity = 255
+
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : this(context, attrs)
@@ -43,13 +48,22 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
 
     fun setBitmap(bitmap: Bitmap) {
         this.bitmap = bitmap
-        invalidate()
+      //  invalidate()
+        postInvalidateDelayed(2000)
+
     }
 
     fun setScale(scale: Float) {
         this.scale = scale
         sharedPreferences.edit().putFloat("scale", scale).apply()
 
+        postInvalidateDelayed(2000)
+    }
+
+    fun setClockOpacity(opacity: Int) {
+        clockOpacity = opacity
+
+        // Redraw the view
         invalidate()
     }
 
@@ -84,7 +98,10 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
                 offscreenCanvas.drawBitmap(scaledBitmap, offsetX.toFloat(), offsetY.toFloat(), null)
             }
         }
+
+
         canvas.drawBitmap(offscreenBitmap!!, 0f, 0f, null)
+        postInvalidateDelayed(2000)
 
 
         /*        bitmap?.let {
@@ -206,7 +223,7 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
         lastTouchX = x
         lastTouchY = y
 
-        invalidate()
+        postInvalidateDelayed(2000)
 
     }
 
@@ -215,6 +232,7 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
         // Example: Change the color of the view back to its original color
      //   setBackgroundColor(Color.WHITE)
     }
+
 
 
 }
