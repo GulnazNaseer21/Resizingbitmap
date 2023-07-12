@@ -2,10 +2,8 @@ package com.exampl.resizingbitmap
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.BitmapFactory
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -15,9 +13,7 @@ import android.widget.RelativeLayout
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners
-import com.bumptech.glide.request.RequestOptions
+import androidx.appcompat.app.AppCompatActivity
 import com.exampl.resizingbitmap.ScreenUtils.getScreenWidth
 
 class MainActivity : AppCompatActivity() {
@@ -62,15 +58,19 @@ class MainActivity : AppCompatActivity() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 Toast.makeText(this@MainActivity,"Progress $progress}",Toast.LENGTH_SHORT).show()
 
+                val min = 35
+                if (progress < min) {
+                    seekBar.progress = min
+                }
 
-
-                if(progress>=35){
+//                if(progress>=35){
                 val scale: Float = progress.toFloat() / 100.0f
-                customView.setScale(scale)}
-                else{
+                customView.setScale(scale)
+            //}
+           /*     else{
                     Toast.makeText(this@MainActivity,"ElseProgress $progress}",Toast.LENGTH_SHORT).show()
 
-                }
+                }*/
               //  customViewOld.setScale(scale)
 
 

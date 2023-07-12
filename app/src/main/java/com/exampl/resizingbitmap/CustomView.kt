@@ -94,8 +94,9 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
                 val scaledBitmap = Bitmap.createScaledBitmap(it, bitmapWidth, bitmapHeight, false)
                 progresswidth= (scale*100).toInt()
                 sharedPreferences.edit().putInt("bitmapWidth", progresswidth).apply()
+                clockPaint.alpha = 150
 
-                offscreenCanvas.drawBitmap(scaledBitmap, offsetX.toFloat(), offsetY.toFloat(), null)
+                offscreenCanvas.drawBitmap(scaledBitmap, offsetX.toFloat(), offsetY.toFloat(), clockPaint)
             }
         }
 
