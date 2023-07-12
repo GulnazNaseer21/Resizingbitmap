@@ -58,19 +58,16 @@ class MainActivity : AppCompatActivity() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 Toast.makeText(this@MainActivity,"Progress $progress}",Toast.LENGTH_SHORT).show()
 
-                val min = 35
-                if (progress < min) {
-                    seekBar.progress = min
-                }
 
-//                if(progress>=35){
+
+                if(progress>=35){
                 val scale: Float = progress.toFloat() / 100.0f
-                customView.setScale(scale)
-            //}
-           /*     else{
+
+                customView.setScale(scale)}
+                else{
                     Toast.makeText(this@MainActivity,"ElseProgress $progress}",Toast.LENGTH_SHORT).show()
 
-                }*/
+                }
               //  customViewOld.setScale(scale)
 
 
